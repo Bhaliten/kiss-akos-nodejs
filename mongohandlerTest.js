@@ -9,15 +9,23 @@ const entity2 = {_id: 2, 'name': 'Janos2', 'age': 21};
 const entity3 = {_id: 3, 'name': 'Janos3', 'age': 21};
 const newEntity = {$set: {'name': 'Agota1', 'age': 22}};
 
-const crudCallback = function () {
+async function waitOneSec() {
+    await new Promise(resolve => setTimeout(resolve, 1000))
+}
+
+const crudCallback = async function () {
 //ha minden oké, és létezik a collection, akkor fog ez a függvény meghívódni, és elvégezni a CRUD művelteket az entitásokkaé
     mongohandler.create(collectionName, entity);
     mongohandler.create(collectionName, entity2);
     mongohandler.create(collectionName, entity3);
 
+
     mongohandler.find(collectionName, entity._id);
+    await waitOneSec();
     mongohandler.update(collectionName, entity._id, newEntity);
+    await waitOneSec();
     mongohandler.find(collectionName, entity._id);
+    await waitOneSec();
 
 
     mongohandler.deleteF(collectionName, entity._id);

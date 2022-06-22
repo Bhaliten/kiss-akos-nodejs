@@ -1,5 +1,6 @@
 const MongoClient = require('mongodb').MongoClient;
-const url = "mongodb://localhost:27017/";
+// const url = "mongodb://localhost:27017/";
+const url = "mongodb+srv://Simon:asd@cluster0.tgzs7xi.mongodb.net/?retryWrites=true&w=majority";
 const dbName = 'mydb'
 
 const dropCollection = function (collectionName, callback) {
